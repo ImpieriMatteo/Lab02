@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="343.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.alien.FXMLController">
+<BorderPane prefHeight="343.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.alien.FXMLController">
    <top>
       <Label text="Lab 2 - Alien Translator" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -19,4 +28,69 @@
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="78.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="246.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.0" minWidth="10.0" prefWidth="97.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="10.0" prefWidth="72.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="25.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Alien Text">
+                     <GridPane.margin>
+                        <Insets left="6.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtParola_e" GridPane.columnIndex="1" />
+                  <CubicCurve controlX1="62.728492736816406" controlX2="-128.23963928222656" controlY1="-46.40654373168945" controlY2="-46.89830780029297" endX="-30.870059967041016" endY="47.76240539550781" startX="-30.870059967041016" startY="47.76240539550781" stroke="BLACK" GridPane.columnIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="12.0" />
+                     </GridPane.margin>
+                  </CubicCurve>
+                  <Ellipse fill="WHITE" radiusX="6.0" radiusY="12.0" rotate="129.8" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="2.0" left="23.0" />
+                     </GridPane.margin>
+                  </Ellipse>
+                  <Ellipse fill="WHITE" radiusX="6.0" radiusY="12.0" rotate="-129.8" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="2.0" left="47.0" />
+                     </GridPane.margin>
+                  </Ellipse>
+                  <Button mnemonicParsing="false" onAction="#handleTranslate" prefHeight="25.0" prefWidth="81.0" text="Translate" GridPane.columnIndex="2">
+                     <GridPane.margin>
+                        <Insets left="9.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </GridPane>
+            <TextArea fx:id="txtResult" editable="false" prefHeight="199.0" prefWidth="493.0" promptText="Welcome to Alien Dictionary v2021...">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextArea>
+            <Button mnemonicParsing="false" onAction="#handleClearText" text="Clear Text">
+               <VBox.margin>
+                  <Insets left="400.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </center>
 </BorderPane>
