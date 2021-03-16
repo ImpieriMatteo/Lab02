@@ -33,6 +33,10 @@ public class FXMLController {
     @FXML
     void handleTranslate(ActionEvent event) {
     	String text = this.txtParola_e.getText();
+    	if(text.equals("")) {
+    		this.txtResult.setText("No Words entered!");
+    		return;
+    	}
     	String[] arrayText = text.split(" ");
     	if(arrayText.length==2) {
     		if(arrayText[0].matches("[a-zA-Z]*") && arrayText[1].matches("[a-zA-Z]*")) {
@@ -43,13 +47,23 @@ public class FXMLController {
     			this.txtResult.setText("Invalid text entered");
     	}
     	else if(arrayText.length>2)
-    		this.txtResult.setText("Invalid text entered");
+    		this.txtResult.setText("Invalid text entered (pay attention to the spaces)");
     	else {
-    		if(text.matches("[a-zA-Z]*"))
-    			if(model.searchWord(text)==null)
+    		if(text.matches("[a-zA-Z?]*") /*&& text.matches("\\?{0, 1}")*/) {
+    			int numberOfQuestionMarks = 0;
+    			for(int i=0; i<text.length(); i++) {
+    				if(text.charAt(i)=='?') {
+    					numberOfQuestionMarks++;
+    				}
+    			}
+    			if(numberOfQuestionMarks>1) {
+    				this.txtResult.setText("Too many ?");
+    			}
+    			else if(model.searchWord(text)==null)
     				this.txtResult.setText("Word not in the Dictionary");
     			else
-    				this.txtResult.setText(model.searchWord(text.toLowerCase()));
+    				this.txtResult.setText(model.searchWord(text.toLowerCase()).toString());
+    		}
     		else
     			this.txtResult.setText("Invalid text entered");
     	}
