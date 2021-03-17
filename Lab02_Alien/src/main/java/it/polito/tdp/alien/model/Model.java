@@ -34,13 +34,15 @@ public class Model {
 			List<String> temp = new ArrayList<>();
 			for(String s : this.dictionary.keySet()) {
 				int matches = 0;
-				for(int i=0; i<word.length(); i++) {
-					if(i<s.length()) {
+				for(int i=0; i<s.length(); i++) {
+					if(i<word.length()) {
 						if(s.charAt(i)==word.charAt(i))
 							matches++;
 						}
-					else
+					else {
+						matches = -1;
 						break;
+					}
 				}
 				if(matches==word.length()-1) {
 					temp.add(s+": "+this.dictionary.get(s).getTranslation().toString());
